@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img.jpg"); -->
+    <style>
+        @font-face {
+            font-family: 'wedding';
+            src: url('wedding_font.ttf');
+        }
+
+        * {
+            margin: 0 auto;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body,
+        html {
+            height: 100%;
+        }
+
+        .container {
+            height: 100%;
+            width: 100%;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("img.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
+
+        .row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 10px;
+        }
+
+        .img-welcome {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            .img-welcome {
+                width: 30%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row" id="welcome">
+            <audio class="audio" loop autoplay="autoplay" controls id="myAudio" style="display: none;">
+                <source src="myheart.mp3" type="audio/mpeg" />
+            </audio>
+            <img src="welcome.png" class="img-welcome">
+        </div>
+        <div class="row" id="w-quot">
+            <h1 style="font-family: wedding; color: white; text-shadow: 0px 2px 10px black; margin-bottom: 10px;">5th
+                Anniversary</h1>
+            <h4
+                style="font-family: Arial, Helvetica, sans-serif; color: white; text-align: center; margin: 0px 10px; text-shadow: 0px 2px 10px black;">
+                <span id="quotes"></span>
+            </h4>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.3/howler.min.js"
+        integrity="sha512-6+YN/9o9BWrk6wSfGxQGpt3EUK6XeHi6yeHV+TYD2GR0Sj/cggRpXr1BrAQf0as6XslxomMUxXp2vIl+fv0QRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var w = $("#welcome");
+        var q = $("#w-quot");
+
+        w.show();
+        q.hide();
+
+        w.click((e) => {
+            e.preventDefault();
+            $("#myAudio")[0].play();
+            w.fadeOut(800, () => {
+                q.fadeIn(800, () => {
+                    typeWriter();
+                });
+            });
+        });
+
+
+        var i = 0;
+        var txt = "Ku mencitaimu bukan karena mahkota biru di kepalamu" +
+            "dan ku menyayangimu bukan karena baju sutera " +
+            "berlapis emas, tapi aku menyayangimu " +
+            "karena ketulusan hati yang kau miliki, untuk " +
+            "itu tetaplah kau menjadi pemenang yang tangguh di hatiku " +
+            "sekuat cinta cinta kita dan kasih sayangku padamu, " +
+            "hanya kejujuran yang berlandaskan kasih sayang " +
+            "dan keikhlasan yang tulus yang akan ku perjuangkan " +
+            "demi mendapatkan kepercayaanmu karena akan ku " +
+            "laksanakan dengan penuh tanggung jawab maka ambilah, " +
+            "ini adalah salah satu bentuk kasih sayangku padamu " +
+            "yang hanya ku berikan untukmu seorang simpan " +
+            "dan pegang erat tanganmu ketika malam datang " +
+            "biarkan cahaya bulan dan bintang meneranginya " +
+            "dan ketika pagi datang bukalah tanganmu biarkan " +
+            "cahaya matahari pagi yang akan menghangatkannya";
+        var speed = 50;
+
+        function typeWriter() {
+            if (i < txt.length) {
+                document.getElementById("quotes").innerHTML += txt.charAt(i);
+                i++;
+                setTimeout(typeWriter, speed);
+            }
+        }
+    </script>
+    <!-- <script>
+        var welcome = document.getElementById("welcome");
+        var wquot = document.getElementById("w-quot");
+
+        welcome.style.display = 'flex';
+        wquot.style.display = 'none';
+
+        welcome.addEventListener("click", ()=>{
+            welcome.style.display = 'none';
+            wquot.style.display = 'flex';
+        });
+    </script> -->
+    <!-- ku mncitaimu bukan karena mahkota biru di kepala mu
+                & ku menyayangi mu bukan karena baju sutera
+                berlapis emas tapi aku menyayangi mu
+                karena ketulusan hati yang kau miliki untuk
+                tu tetaplah kau menjadi pemenag yang tangguh d hati
+                q sekuat cinta cinta kita & kasih sayang ku pada mu
+                hanya kejujuran yang berlandaskan kasih sayang
+                & keikhlasan yang tulus yang akan ku perjuangkan
+                demi mendapatkan kepercayaan mu karena akan ku
+                laksanakan dengan penuh tanggung jawab maka ambilah,
+                ini adlah salah satu bentuk kasih sayang ku pada mu
+                yang hanya ku berikan untuk mu seorang simpan
+                dan pegang erat tangan mu ketika malam datang
+                biarkan cahaya bulan dan bintang meneranginya
+                & ketika pagi datang bukalah tangan mu biarkan
+                cahaya matahari pagi yang akan menghangatkannya -->
+</body>
+
+</html>
